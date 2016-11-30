@@ -1,2 +1,14 @@
 # BzBox-MachineLearning-Local
-Feature extraction and classifier code for local processing
+Machine Learning algorithms in C++ for posterior Particle implementation.
+
+Build
+=====
+Run build.sh from Particle folder.
+
+Usage
+=====
+After building, running ./test will load test.dat from resources and extract features from it with the filters defined in coeffs.txt.
+
+The results will be saved in a file named energy_bands.dat, as a time series of the energy in each frequency band.
+
+The time window length for computing energy can be changed in params.h (requires rebuilding).
