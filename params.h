@@ -1,6 +1,6 @@
 //Window Length in s
-float windowLength=10;
+float windowLength=2;
 
 //Sampling Rate in Hz
-float samplingRate=4410;
+float samplingRate=2205;
 

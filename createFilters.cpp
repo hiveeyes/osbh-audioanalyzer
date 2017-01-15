@@ -92,7 +92,7 @@ vector <Filter> createFilters()
 }
 
 //Loads and parses coefficients file, creating filters from it
-/*
+
 vector <Filter> createFilters(string coeffsFileName)
 {
 	//Read and parse coefficients file	
@@ -165,4 +165,3 @@ vector <Filter> createFilters(string coeffsFileName)
 	coeffsText.close();
 	return filters;
 }
-*/

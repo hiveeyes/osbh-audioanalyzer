@@ -1,5 +1,6 @@
 #include "createFilters.h"
 #include "featureExtractor.h"
+#include "classifier.h"
 #include <fstream>
 #include <vector>
 using namespace std;
@@ -10,19 +11,24 @@ int main()
 {
 	
 	//create filters
-	//vector<Filter> filters=createFilters("resources/coeffs.txt");
-	vector<Filter> filters=createFilters();
+	vector<Filter> filters=createFilters("../resources/coeffs.txt");
+	//vector<Filter> filters=createFilters();
 
 	//create feature extractor (params in h file)
 	FeatureExtractor fex(filters, samplingRate, windowLength);
 	
+
+	//create classifier
+	Classifier c("f0,-55.079437,2,1\nf1,-36.502423,3,4\ns4\ns1\ns3");
+
 	//Output: Energy vector time series
 	vector < vector < float > > energy;
+	vector < vector < string > > states;
 	vector <float> energy_local;
 	
 	//Read test data file line by line for testing. This should be changed to sample gathering from Particle ADC
 	
-	ifstream data ("resources/test.dat");
+	ifstream data ("../resources/test_small.dat");
 	if(data.is_open ())
 	{	
 		//Input: x
@@ -36,6 +42,8 @@ int main()
 			//If feature extractor is ready
 			if(fex.isReady()){
 				energy_local=fex.getEnergy();
+				cout<<c.classify(energy_local);
+				cout<<"\n";
 				fex.clearEnergy();
 				energy.push_back(energy_local);
 			}
