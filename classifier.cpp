@@ -40,7 +40,8 @@ void Classifier::parse (string s)
 		if(line.at(0) == 'f')
 		{
 			node.push_back(0.0);
-			node.push_back(stof(line.substr(1,line.find(',')-1)));
+			//node.push_back(stof(line.substr(1,line.find(',')-1)));
+			node.push_back((float)atof(line.substr(1,line.find(',')-1).c_str()));
 
 			//Push the rest from the first comma
 			stringstream tokenStream(line.substr(line.find(',')-1));
