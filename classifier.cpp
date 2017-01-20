@@ -1,5 +1,7 @@
 #include "classifier.h"
-
+#include <iostream>
+#include <sstream>
+#include <string>
 
 //Constructor. parse() does the rest
 Classifier::Classifier (string s){
@@ -29,7 +31,7 @@ We use a float vectors, so each line would be:
 */
 void Classifier::parse (string s)
 {
-	stringstream lineStream(s);
+	std::stringstream lineStream(s);
 	string line;
 	vector<float> node;
 
@@ -41,15 +43,15 @@ void Classifier::parse (string s)
 		{
 			node.push_back(0.0);
 			//node.push_back(stof(line.substr(1,line.find(',')-1)));
-			node.push_back((float)atof(line.substr(1,line.find(',')-1).c_str()));
+			node.push_back((float)atof(line.substr(1,line.find(',')-1).data()));
 
 			//Push the rest from the first comma
-			stringstream tokenStream(line.substr(line.find(',')-1));
+			std::stringstream tokenStream(line.substr(line.find(',')-1));
 			string token;
 
 			while(getline(tokenStream, token, ','))
 			{
-    			node.push_back(stof(token));
+    			node.push_back((float)atof(token.data()));
 			}
 
 		}
@@ -57,7 +59,7 @@ void Classifier::parse (string s)
 		else if(line.at(0)=='s')
 		{
 			node.push_back(1.0);
-			node.push_back(stof(line.substr(1)));
+			node.push_back((float)atof(line.substr(1).data()));
 		}
 		else{
 			cout<<"Error with classifier input string\n";
