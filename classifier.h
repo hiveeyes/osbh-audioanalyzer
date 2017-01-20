@@ -1,8 +1,10 @@
-#include <iostream>
 #include <sstream>
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "states.h"
+
 using namespace std;
 
 //Classifier class. Classifies energy vector

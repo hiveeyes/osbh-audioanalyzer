@@ -1,7 +1,9 @@
 #include "classifier.h"
-#include <iostream>
 #include <sstream>
+#include <iostream>
+#include <fstream>
 #include <string>
+#include <vector>
 
 //Constructor. parse() does the rest
 Classifier::Classifier (string s){
