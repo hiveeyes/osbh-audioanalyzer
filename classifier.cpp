@@ -1,9 +1,4 @@
 #include "classifier.h"
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
 
 //Constructor. parse() does the rest
 Classifier::Classifier (string s){
@@ -33,13 +28,18 @@ We use a float vectors, so each line would be:
 */
 void Classifier::parse (string s)
 {
-	std::stringstream lineStream(s);
+	//std::stringstream lineStream(s);
 	string line;
+	int linePosition;
+
+
 	vector<float> node;
 
 	//Divide by lines
-	while(getline(lineStream, line))
+	while((linePosition=s.find('\n'))!=-1)
+	//while(getline(lineStream, line))
 	{
+		line=s.substr(0, linePosition+1);
 		//Check first letter. If feature, push a 0 and the feature number
 		if(line.at(0) == 'f')
 		{
@@ -48,13 +48,20 @@ void Classifier::parse (string s)
 			node.push_back((float)atof(line.substr(1,line.find(',')-1).data()));
 
 			//Push the rest from the first comma
-			std::stringstream tokenStream(line.substr(line.find(',')-1));
+			//std::stringstream tokenStream(line.substr(line.find(',')-1));
 			string token;
+			string values=line.substr(line.find(',')-1);
+			int commaPosition;
 
-			while(getline(tokenStream, token, ','))
+			while((commaPosition=values.find(','))!=-1 || (commaPosition=values.find('\n'))!=-1)
+			//while(getline(tokenStream, token, ','))
 			{
+				token=values.substr(0, commaPosition);
     			node.push_back((float)atof(token.data()));
+    			values=values.substr(commaPosition+1);
 			}
+
+			node.push_back((float)atof(token.data()));
 
 		}
 		//If state, push a 1 and the state number
@@ -64,10 +71,11 @@ void Classifier::parse (string s)
 			node.push_back((float)atof(line.substr(1).data()));
 		}
 		else{
-			cout<<"Error with classifier input string\n";
+		//	cout<<"Error with classifier input string\n";
 			break;
 		}
     	decisionTree.push_back(node);
+    	s=s.substr(linePosition+1);
     	node.clear();
 	}
 }
