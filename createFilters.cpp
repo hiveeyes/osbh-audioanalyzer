@@ -3,93 +3,78 @@
 
 vector <Filter> createFilters()
 {
-		//Filter vector
+	//Filter vector
 	vector <Filter> filters;
-
-	//Float vectors for storing coefficients	
-	vector<vector<float> > coeffs;
-
-	//1st second order section
+ 
+	//Float vectors for storing coefficients
+	vector<vector<float>> coeffs;
+ 
+	//Filter
+	Filter f(coeffs,0);
+ 
 	vector<float> sos(6);
-	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, -1.984084e+00, 9.886387e-01};
+ 
+	sos={(float)1.000000e+00,  2.000000e+00,  9.999997e-01,  1.000000e+00, -1.962087e+00,  9.825848e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00, -2.000000e+00, 1.000000e+00, 1.000000e+00, -1.990548e+00, 9.953167e-01};
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00, -1.968876e+00,  9.854361e-01};
 	coeffs.push_back(sos);
-	//1st filter
-	Filter f (coeffs, 2.930094e-05);
+	f=Filter(coeffs, 1.245098e-04);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, -1.946510e+00, 9.787749e-01};
+	
+	sos={(float)1.000000e+00,  2.000000e+00,  9.999997e-01,  1.000000e+00, -1.831753e+00,  9.583182e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-1.955860e+00,9.813309e-01};
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00, -1.862277e+00,  9.626915e-01};
 	coeffs.push_back(sos);
-	//2nd filter
-	f=Filter(coeffs, 2.016789e-04);
+	f=Filter(coeffs, 7.780287e-04);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00,2.000000e+00,9.999997e-01,1.000000e+00,-1.298059e+00,9.084855e-01};
+	
+	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, 1.414961e-01, 8.322749e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-1.426870e+00,9.163276e-01};
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00, -1.963557e-01,  8.327025e-01};
 	coeffs.push_back(sos);
-	//3rd filter
-	f=Filter(coeffs, 3.845109e-03);
+	f=Filter(coeffs, 1.415032e-02);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00,2.000000e+00,9.999997e-01,1.000000e+00,-1.127357e+00,8.970964e-01};
+	
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00,  1.659577e-01,  8.084948e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-1.285726e+00,9.051855e-01};
+	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, 5.401055e-01, 8.156620e-01};
 	coeffs.push_back(sos);
-	//4th filter
-	f=Filter(coeffs, 4.900544e-03);
+	f=Filter(coeffs, 1.785500e-02);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00,2.000000e+00,9.999997e-01,1.000000e+00,-7.999985e-01,8.778063e-01};
+	
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00,  7.553471e-01,  7.612362e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-1.011989e+00,8.855665e-01};
+	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, 1.154765e+00, 7.939698e-01};
 	coeffs.push_back(sos);
-	//5th filter
-	f=Filter(coeffs, 7.028156e-03);
+	f=Filter(coeffs, 2.517611e-02);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00,2.000000e+00,9.999997e-01,1.000000e+00,-6.669801e-01,8.706456e-01};
+	
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00,  9.520854e-01,  7.399303e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-8.994795e-01,8.779843e-01};
+	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, 1.349033e+00, 7.899214e-01};
 	coeffs.push_back(sos);
-	//6th filter
-	f=Filter(coeffs, 7.935346e-03);
+	f=Filter(coeffs, 2.824794e-02);
 	filters.push_back(f);
 	coeffs.clear();
-
-	//1st second order section
-	sos={1.000000e+00,2.000000e+00,9.999997e-01,1.000000e+00,-5.311512e-01,8.636423e-01};
+	
+	sos={(float)1.000000e+00, -2.000000e+00,  1.000000e+00,  1.000000e+00,  1.124670e+00,  7.151349e-01};
 	coeffs.push_back(sos);
-	//2nd
-	sos={1.000000e+00,-2.000000e+00,1.000000e+00,1.000000e+00,-7.837712e-01,8.703682e-01};
+	sos={(float)1.000000e+00, 2.000000e+00, 9.999997e-01, 1.000000e+00, 1.515845e+00, 7.904018e-01};
 	coeffs.push_back(sos);
-	//7th filter
-	f=Filter(coeffs, 8.890164e-03);
+	f=Filter(coeffs, 3.145326e-02);
 	filters.push_back(f);
 	coeffs.clear();
-
-
+	
 	return filters;
 }
+
+
+
 
 //Loads and parses coefficients file, creating filters from it
 

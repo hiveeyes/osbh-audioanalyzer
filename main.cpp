@@ -11,15 +11,15 @@ int main()
 {
 	
 	//create filters
-	vector<Filter> filters=createFilters("../resources/coeffs.txt");
-	//vector<Filter> filters=createFilters();
+	//vector<Filter> filters=createFilters("../resources/coeffs_2205.txt");
+	vector<Filter> filters=createFilters();
 
 	//create feature extractor (params in h file)
 	FeatureExtractor fex(filters, samplingRate, windowLength);
 	
 
 	//create classifier
-	Classifier c("f0,-55.079437,2,1\nf1,-36.502423,3,4\ns4\ns1\ns3");
+	Classifier c("f1,21.636442,1,5\nf0,0.087535,2,3\nf1,0.755093,3,4\ns1\ns4\ns3\n");
 
 	//Output: Energy vector time series
 	vector < vector < float > > energy;
@@ -28,7 +28,7 @@ int main()
 	
 	//Read test data file line by line for testing. This should be changed to sample gathering from Particle ADC
 	
-	ifstream data ("../resources/test_small.dat");
+	ifstream data ("../resources/Active.dat");
 	if(data.is_open ())
 	{	
 		//Input: x

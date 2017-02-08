@@ -43,14 +43,18 @@ void Classifier::parse (string s)
 		//Check first letter. If feature, push a 0 and the feature number
 		if(line.at(0) == 'f')
 		{
+			//Push 0 for feature
 			node.push_back(0.0);
 			//node.push_back(stof(line.substr(1,line.find(',')-1)));
+
+			//Push feature number
 			node.push_back((float)atof(line.substr(1,line.find(',')-1).data()));
 
 			//Push the rest from the first comma
 			//std::stringstream tokenStream(line.substr(line.find(',')-1));
 			string token;
-			string values=line.substr(line.find(',')-1);
+			string values=line.substr(line.find(',')+1);
+			values=line.substr(line.find(',')+1);
 			int commaPosition;
 
 			while((commaPosition=values.find(','))!=-1 || (commaPosition=values.find('\n'))!=-1)
@@ -60,8 +64,7 @@ void Classifier::parse (string s)
     			node.push_back((float)atof(token.data()));
     			values=values.substr(commaPosition+1);
 			}
-
-			node.push_back((float)atof(token.data()));
+			
 
 		}
 		//If state, push a 1 and the state number
@@ -96,9 +99,12 @@ string Classifier::classify(vector<float> energy)
 			return states[(int)decisionTree[node][1]];
 		}
 		else if(energy[(int)decisionTree[node][1]] <= decisionTree[node][2]){
+			
 			node=(int)decisionTree[node][3];
+
 		}
 		else{
+			
 			node=(int)decisionTree[node][4];
 		}
 
