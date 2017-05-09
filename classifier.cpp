@@ -89,14 +89,14 @@ Again:
 						  -> (state) number of state
 */
 
-string Classifier::classify(vector<float> energy)
+int Classifier::classify(vector<float> energy)
 {
 	int node=0;
 	while (true)
 	{
 		if(decisionTree[node][0]==1)
 		{
-			return states[(int)decisionTree[node][1]];
+			return (int)decisionTree[node][1];
 		}
 		else if(energy[(int)decisionTree[node][1]] <= decisionTree[node][2]){
 			

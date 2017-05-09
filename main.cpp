@@ -3,9 +3,34 @@
 #include "classifier.h"
 #include <fstream>
 #include <vector>
+#include <array>
+#include "states.h"
 using namespace std;
 //parameters
 #include "params.h"
+
+/** Performs majority voting on stored beehive states
+*/
+int majorityVoting(vector<int> states)
+{
+	//Count all states
+	std::array<int,11> count={0,0,0,0,0,0,0,0,0,0,0};
+	for( int i = 0; i < states.size(); i++ )
+	{	
+		count[states[i]]++;
+	}
+
+	//Determine most repeated state
+	int indexWinner = 1;
+	for( int i = 1; i < count.size(); i++ )
+	{
+		if( count[i] > count[indexWinner] )
+		{
+			indexWinner = i;
+		}
+	}
+	return indexWinner;
+}
 
 int main()
 {
@@ -23,16 +48,15 @@ int main()
 
 	//Output: Energy vector time series
 	vector < vector < float > > energy;
-	vector < vector < string > > states;
+	vector < int > DetectedStates;
 	vector <float> energy_local;
 	
 	//Read test data file line by line for testing. This should be changed to sample gathering from Particle ADC
 	
-	ifstream data ("../resources/Active.dat");
+	ifstream data ("../resources/Swarm_long.dat");
 	if(data.is_open ())
 	{	
-		//Input: x
-		
+		//Input: x		
 		float x;
 		while (data >> x)
 		{
@@ -42,10 +66,16 @@ int main()
 			//If feature extractor is ready
 			if(fex.isReady()){
 				energy_local=fex.getEnergy();
-				cout<<c.classify(energy_local);
-				cout<<"\n";
+				DetectedStates.push_back(c.classify(energy_local));
 				fex.clearEnergy();
 				energy.push_back(energy_local);
+
+				//If we get to 5 classifications, perform majority voting and output state
+				if(DetectedStates.size()==5){
+					cout<<states[majorityVoting(DetectedStates)];
+					cout<<"\n";
+					DetectedStates.clear();
+				}
 			}
 		}
 	}

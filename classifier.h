@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "states.h"
 
 using namespace std;
 
@@ -17,6 +16,6 @@ class Classifier {
   public:
     Classifier (string s);
     void parse (string s);
-	string classify (std::vector<float> energy);
+	int classify (std::vector<float> energy);
 
 };
