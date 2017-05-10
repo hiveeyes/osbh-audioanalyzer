@@ -18,7 +18,10 @@ class FeatureExtractor {
 	
 	//Frequency band energy
 	std::vector<float> energy;
-	
+
+	//RMS value for normalization
+	float rms;
+
 	//ready flag
 	bool ready;
 
@@ -28,6 +31,7 @@ class FeatureExtractor {
 	void update(float value);
     bool isReady();
 	std::vector<float> getEnergy();
+	float getRMS();
 	void clearEnergy();
 
 };
