@@ -54,7 +54,7 @@ int main()
 	
 	//Read test data file line by line for testing. This should be changed to sample gathering from Particle ADC
 	
-	ifstream data ("../resources/Active_long.dat");
+	ifstream data ("../resources/6300/Swarm_long.dat");
 	if(data.is_open ())
 	{	
 		//Input: x		
