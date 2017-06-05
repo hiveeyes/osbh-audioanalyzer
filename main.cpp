@@ -32,7 +32,7 @@ int majorityVoting(vector<int> states)
 	return indexWinner;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
 	
 	//create filters
@@ -52,9 +52,11 @@ int main()
 	vector < int > DetectedStates;
 	vector <float> energy_local;
 	
-	//Read test data file line by line for testing. This should be changed to sample gathering from Particle ADC
-	
-	ifstream data ("../resources/6300/Swarm_long.dat");
+	//Read data file line by line. This should be changed to sample gathering from Particle ADC
+	std::string filename = argv[1];
+    cout << "Opening file " << filename << "\n";
+    ifstream data (filename);
+
 	if(data.is_open ())
 	{	
 		//Input: x		
