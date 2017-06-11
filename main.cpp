@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 
 	//Read data file line by line. This should be changed to sample gathering from Particle ADC
 	std::string filename = argv[1];
-    cout << "Opening file " << filename << "\n";
+    cerr << "Opening file " << filename << "\n";
     ifstream data (filename);
 
 	if(data.is_open ())
