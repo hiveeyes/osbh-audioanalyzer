@@ -9,13 +9,19 @@ using namespace std;
 
 class Classifier {
 	
+	//Classifier type
+	int classifierType;
 
     //Decision Tree
     vector<vector<float>> decisionTree;
 
+    //Linear regression
+    vector<vector<float>> linearComb;
+
   public:
-    Classifier (string s);
-    void parse (string s);
+    Classifier (string type, string s);
+    void tree_parse (string s);
+    void logistic_parse (string s);
 	int classify (std::vector<float> energy);
 
 };
