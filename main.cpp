@@ -32,8 +32,32 @@ int majorityVoting(vector<int> states)
 	return indexWinner;
 }
 
+// https://techoverflow.net/2013/01/11/c-check-if-file-exists/
+bool fexists(const char *filename) {
+  std::ifstream ifile(filename);
+  return (bool)ifile;
+}
+bool fexists(const std::string& filename) {
+  std::ifstream ifile(filename.c_str());
+  return (bool)ifile;
+}
+
 int main(int argc, char* argv[])
 {
+
+    //Read input filename from program arguments
+    if (argc < 2) {
+        cerr << "Usage: ./test audio.dat" << "\n";
+        exit(2);
+    }
+    std::string filename = argv[1];
+
+    //Sanity checks
+    if (!fexists(filename)) {
+        cerr << "Error: File \"" << filename << "\" does not exist or is not readable." << "\n";
+        exit(2);
+    }
+
 	//create filters
 	//vector<Filter> filters=createFilters("../resources/coeffs_2205.txt");
 	vector<Filter> filters=createFilters();
@@ -50,12 +74,12 @@ int main(int argc, char* argv[])
 	vector < vector < float > > energy;
 	vector < int > DetectedStates;
 	vector <float> energy_local;
-	
-	//Read data file line by line. This should be changed to sample gathering from Particle ADC
-	std::string filename = argv[1];
+
+    //Open audio file in .dat format
     cerr << "Opening file " << filename << "\n";
     ifstream data (filename);
 
+    //Read data file line by line. This should be changed to sample gathering from Particle ADC
 	if(data.is_open ())
 	{
 		//Input: x
