@@ -16,7 +16,7 @@ int majorityVoting(vector<int> states)
 	//Count all states
 	std::array<int,11> count={0,0,0,0,0,0,0,0,0,0,0};
 	for( int i = 0; i < states.size(); i++ )
-	{	
+	{
 		count[states[i]]++;
 	}
 
@@ -34,14 +34,13 @@ int majorityVoting(vector<int> states)
 
 int main(int argc, char* argv[])
 {
-	
 	//create filters
 	//vector<Filter> filters=createFilters("../resources/coeffs_2205.txt");
 	vector<Filter> filters=createFilters();
 
 	//create feature extractor (params in h file)
 	FeatureExtractor fex(filters, samplingRate, windowLength);
-	
+
 
 	//create classifier
 	//Classifier c("f1,21.636442,1,5\nf0,0.087535,2,3\nf1,0.755093,3,4\ns1\ns4\ns3\n");
@@ -58,14 +57,14 @@ int main(int argc, char* argv[])
     ifstream data (filename);
 
 	if(data.is_open ())
-	{	
-		//Input: x		
+	{
+		//Input: x
 		float x;
 		while (data >> x)
 		{
 			//Update feature extractor
 			fex.update(x);
-			
+
 			//If feature extractor is ready
 			if(fex.isReady()){
 				energy_local=fex.getEnergy();
@@ -83,11 +82,11 @@ int main(int argc, char* argv[])
 		}
 	}
 	data.close();
-	
+
 	//Write results to file
 	ofstream outputFile;
 	outputFile.open ("energy_bands.dat");
-		
+
 	for (int i = 0; i < energy.size(); i++)
 	{
 		for (int j = 0; j < energy[i].size(); j++)
@@ -96,7 +95,7 @@ int main(int argc, char* argv[])
 		}
 		outputFile << "\n";
 	}
-	
+
 	outputFile.close();
-	
+
 }
