@@ -226,7 +226,8 @@ int Classifier::classify(vector<float> energy)
 			for(int i=0; i<instanceFs.size(); i++)
 			{
 				instanceFs[i]=exp(instanceFs[i] - maxF);
-				
+				//cout << instanceFs[i];
+				//cout << "\n";
 				if (instanceFs[i] > max){
 					max=instanceFs[i];
 					node=linearComb[i][0];

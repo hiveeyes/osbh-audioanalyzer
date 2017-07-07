@@ -14,21 +14,27 @@ vector <Filter> createFilters()
  
 	vector<float> sos(6);
  
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.984834e+00,  9.873643e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.988192e+00,  9.898294e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 6.469432e-03);
+	f=Filter(coeffs, 5.581749e-03);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.978322e+00,  9.829424e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.980926e+00,  9.846599e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 8.564669e-03);
+	f=Filter(coeffs, 7.670585e-03);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.968288e+00,  9.768331e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.975628e+00,  9.812284e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 1.162385e-02);
+	f=Filter(coeffs, 9.517449e-03);
+	filters.push_back(f);
+	coeffs.clear();
+	
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.963954e+00,  9.744001e-01};
+	coeffs.push_back(sos);
+	f=Filter(coeffs, 1.287313e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
@@ -38,39 +44,51 @@ vector <Filter> createFilters()
 	filters.push_back(f);
 	coeffs.clear();
 	
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.937975e+00,  9.616016e-01};
+	coeffs.push_back(sos);
+	f=Filter(coeffs, 1.929711e-02);
+	filters.push_back(f);
+	coeffs.clear();
+	
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.916886e+00,  9.527626e-01};
+	coeffs.push_back(sos);
+	f=Filter(coeffs, 2.368217e-02);
+	filters.push_back(f);
+	coeffs.clear();
+	
 	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.888722e+00,  9.423521e-01};
 	coeffs.push_back(sos);
 	f=Filter(coeffs, 2.891657e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.870536e+00,  9.362512e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.793798e+00,  9.140404e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 3.197003e-02);
+	f=Filter(coeffs, 4.298210e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.823490e+00,  9.220812e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.758468e+00,  9.051555e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 3.904069e-02);
+	f=Filter(coeffs, 4.747219e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.666155e+00,  8.845031e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.716855e+00,  8.954499e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 5.776395e-02);
+	f=Filter(coeffs, 5.230716e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.454950e+00,  8.457071e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.539156e+00,  8.601357e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 7.714661e-02);
+	f=Filter(coeffs, 6.993926e-02);
 	filters.push_back(f);
 	coeffs.clear();
 	
-	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00, -1.109470e+00,  7.950290e-01};
+	sos={(float)1.000000e+00,  0.000000e+00, -1.000000e+00,  1.000000e+00,  1.077900e+00,  5.427943e-01};
 	coeffs.push_back(sos);
-	f=Filter(coeffs, 1.025104e-01);
+	f=Filter(coeffs, 2.286031e-01);
 	filters.push_back(f);
 	coeffs.clear();
 	

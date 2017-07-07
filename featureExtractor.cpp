@@ -5,7 +5,7 @@
 FeatureExtractor::FeatureExtractor(std::vector<Filter> &filters, float samplingRate, float windowLength)
 {
 		this->filters=filters;
-		this->windowSamples=int (0.5+samplingRate*windowLength);
+		this->windowSamples=int (samplingRate*windowLength);
 		this->sampleCount=0;
 		this->energy.resize(filters.size());
 		std::fill(this->energy.begin(), this->energy.end(), 0);
