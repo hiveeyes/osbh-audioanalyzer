@@ -8,6 +8,6 @@
 using namespace std;
 
 vector <Filter> createFilters();
+vector <Filter> createFiltersV1();
 
 vector <Filter> createFilters(string coeffsFileName);
-	
